@@ -151,5 +151,16 @@ while(True):
 
 
     if in_put == "6" :
+        
+        swift.set_position(x = 100 ,y = 200 , z = 0 )
+        
+        swift.waiting_ready(timeout=20)
+        device_info = swift.get_device_info()
+        firmware_version = device_info['firmware_version']
+        if firmware_version and not firmware_version.startswith(('0.', '1.', '2.', '3.')):
+             swift.set_speed_factor(0.02)
+        swift.set_position(x = 280 ,y = 200 , z =  0 )
+        swift.set_position(x = 280 ,y = -200 , z =  0 )
+        swift.set_position(x = 100 ,y = -200 , z =  0 )
         print("Exiting")
-        break
+        
