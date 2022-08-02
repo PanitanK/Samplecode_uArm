@@ -19,8 +19,8 @@ high = 150
 val = 90
 broker = 'broker.hivemq.com'
 port = 1883
-topic1 = "aielab/rotation"
-topic2 = "aielab/toggle"
+topic = [("aielab/rotation",0), ("aielab/toggle" , 0)]
+
 client_id = f'python-mqtt-{random.randint(0, 1000)}'
 
 print("Reset to default position")
@@ -39,7 +39,7 @@ def connect_mqtt():
 
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
-        
+        print(msg.payload.id)
         val = msg.payload.decode()
         print("val is " + str(val) )
         valin = val 
@@ -58,8 +58,8 @@ def subscribe(client: mqtt_client):
 
 
 
-    client.subscribe(topic1)
-    client.subscribe(topic2)
+    client.subscribe(topic)
+    
     client.on_message = on_message
     
     
