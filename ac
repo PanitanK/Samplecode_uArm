@@ -1,0 +1,65 @@
+
+from ast import Str
+
+def primesort(j , i = 2 ):
+        if  j <= 2 or i == j:
+            return True
+        elif j % i == 0 :
+            return False
+        else :
+            return primesort(j , i +1 )  
+
+
+while True :
+    try :
+       j = int(input("Maximum nummer : "))
+
+    except ValueError :
+        print("Invalid type of an input ")
+        continue 
+
+    
+    set1 = input("ODD,EVEN or BOTH (O/E/B) : ")
+    if set1.upper() == "O" :
+        set1 = "ODD"
+        j = j + (j % 2) - 1
+        x = range(j , 0 , -2)
+    elif set1.upper() == "E" :
+        set1 = "EVEN"
+        j = j - (j % 2) 
+        x = range(j , 0 , -2)
+    elif set1.upper() == "B" :
+        set1 = "BOTH"
+        x = range(j , 0 , -1)
+    else :
+        print("Invalid")
+        continue
+    
+    set2 = input("Only prime nummer ? (Y/N): ")
+    if set2.upper() == "Y" :
+
+        
+        for n in x :
+            if primesort(n) is True :
+                print(str(n) +" is prime nummer ")
+
+
+    elif set2.upper() == "N" :
+        
+        for n in x :
+            print(str(n) +" is prime nummer : " + str(primesort(n)))
+    else :
+        print("Invalid")
+        continue
+
+    
+
+    
+    
+        
+
+
+    
+   
+    
+    

@@ -218,6 +218,20 @@ while a != "esc":
                 print("pump off")
             j = j+1
             time.sleep(2)
+
+        elif a == "0" :
+        
+            swift.waiting_ready(timeout=20)
+            device_info = swift.get_device_info()
+            firmware_version = device_info['firmware_version']
+            if firmware_version and not firmware_version.startswith(('0.', '1.', '2.', '3.')):
+                swift.set_speed_factor(0.0005)
+            print(a)
+            print("Calibration")
+            swift.set_mode(0)
+            swift.set_position(x = 204 ,y =  -94   , z =  -5 )
+            swift.set_position(swift.get_position)
+            print("direction online") 
          
             
      

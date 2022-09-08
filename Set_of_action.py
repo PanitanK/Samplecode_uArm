@@ -164,3 +164,37 @@ while(True):
         swift.set_position(x = 100 ,y = -200 , z =  0 )
         print("Exiting")
         
+    if in_put == "7" :
+        
+        swift.set_position(x = 200 ,y = 0, z = 100 )
+        
+        swift.waiting_ready(timeout=20)
+        device_info = swift.get_device_info()
+        firmware_version = device_info['firmware_version']
+        if firmware_version and not firmware_version.startswith(('0.', '1.', '2.', '3.')):
+             swift.set_speed_factor(0.02)
+        swift.set_position(x = 200 ,y = 0 , z =  -8 )
+        swift.set_pump(on=True)
+        swift.set_position(x = 200 ,y = 0 , z =  130 )
+        swift.set_position(x = 250 ,y = 100 , z =  130 )
+        swift.set_position(x = 250 ,y = 100 , z =  100 )
+        swift.set_pump(on=False)
+        print("Exiting")
+    
+    if in_put == "7" :
+        
+        swift.set_position(x = 200 ,y = 0, z = 100 )
+        
+        swift.waiting_ready(timeout=20)
+        device_info = swift.get_device_info()
+        firmware_version = device_info['firmware_version']
+        if firmware_version and not firmware_version.startswith(('0.', '1.', '2.', '3.')):
+             swift.set_speed_factor(0.02)
+        pocor = swift.get_polar()
+        print("\n")
+        print(" Coordinate in polar = : " )
+        print(pocor)
+        stret = pocor[0]
+        rotate = pocor[1]
+        high = pocor[2]
+        print("Exiting")

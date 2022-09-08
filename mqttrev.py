@@ -39,7 +39,7 @@ def connect_mqtt():
 
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
-        print(msg.payload.id)
+        print(msg)
         val = msg.payload.decode()
         print("val is " + str(val) )
         valin = val 
@@ -74,3 +74,16 @@ def run():
 
 if __name__ == '__main__':
     run()
+
+
+
+
+
+
+
+
+
+
+
+
+
